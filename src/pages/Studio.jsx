@@ -1,9 +1,207 @@
-import React from 'react'
+import { useRef, useLayoutEffect, useState } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Game from "../components/Game";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Studio = () => {
-  return (
-    <div>Studio</div>
-  )
-}
 
-export default Studio
+  const sectionRef = useRef(null);
+
+  useLayoutEffect(() => {
+    const sectionTrigger = gsap.context(() => {
+      gsap.from('.studio-card', {
+        y: 80,
+        opacity: 0,
+        scale: 0.95,
+        duration: 1,
+        ease: 'power4.out',
+
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 75%',
+          end: 'top 40%',
+          toggleActions: 'play none none reverse'
+        }
+      })
+
+      gsap.from('.studio-text', {
+        x: 50,
+        opacity: 0,
+        duration: 1,
+        stagger: 0.05,
+        ease: 'power3.out',
+
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 60%',
+          toggleActions: "play none none reverse"
+        }
+      })
+
+    }, sectionRef)
+
+    return () => sectionTrigger.revert()
+  }, [])
+
+  const [hoverColours, setHoverColours] = useState({});
+
+  const colours = [
+    "var(--accent-pink)",
+    "var(--accent-sage)",
+    "var(--accent-sky)",
+    "var(--accent-lavender)",
+    "var(--accent-butter)",
+    "var(--accent-terracotta)",
+
+    "var(--highlight-pink)",
+    "var(--highlight-sage)",
+    "var(--highlight-sky)",
+    "var(--highlight-lavender)",
+    "var(--highlight-butter)",
+    "var(--highlight-terracotta)",
+  ];
+
+  // const randomColour = colours[Math.floor(Math.random() * colours.length)];
+
+  const title = "⊹˖. About Me".split(" ");
+
+  return (
+    <>
+      <section
+        ref={sectionRef}
+        className="min-h-[calc(100vh-4.5rem)] bg-bg-primary"
+      >
+        <div className="studio-card h-full relative overflow-hidden">
+          {/* heading */}
+          <div className="absolute top-8 left-10 z-10">
+            <h1 className="text-7xl font-garamond mb-10 whitespace-nowrap">
+              {title.map((word, index) => {
+                return (
+                  <span
+                    key={index}
+                    style={{
+                      "--hover-color": hoverColours[index],
+                    }}
+                    onMouseEnter={() =>
+                      setHoverColours((prev) => ({
+                        ...prev,
+                        [index]:
+                          colours[Math.floor(Math.random() * colours.length)],
+                      }))
+                    }
+                    className="
+          inline-block
+          mr-4
+          transition-all
+          duration-300
+          hover:text-[var(--hover-color)]
+          hover:-translate-y-1
+        "
+                  >
+                    {word}
+                  </span>
+                );
+              })}
+            </h1>
+          </div>
+
+          {/* content */}
+          <div className="h-full flex pt-32">
+            <div className="w-[40%] flex items-center justify-center relative">
+              <Game />
+            </div>
+
+            <div className="studio-text w-[60%] p-12 flex flex-col justify-center">
+              <div className="relative">
+                <span className="font-snell text-6xl text-highlight-pink absolute -left-10 -top-18 capitalize">
+                  hello!
+                </span>
+              </div>
+
+              <div className="space-y-6 max-w-2xl capitalize">
+                <p className="text-sm tracking-widest leading-relaxed max-w-2xl">
+                  i'm aiesha ganguly — a{" "}
+                  <span className="text-highlight-pink font-bold">
+                    full-stack developer
+                  </span>{" "}
+                  who brings ideas to life through{" "}
+                  <span className="text-highlight-sage font-bold">code</span>,
+                  creativity, and{" "}
+                  <span className="text-highlight-sky font-bold">
+                    interactive digital experiences
+                  </span>
+                  . i create modern web applications that combine clean
+                  development with thoughtful design, smooth animations, and
+                  intuitive user experiences.
+                </p>
+
+                <p className="text-sm tracking-widest leading-relaxed ml-12 max-w-xl">
+                  my journey started with{" "}
+                  <span className="text-highlight-lavender font-bold">
+                    curiosity
+                  </span>{" "}
+                  about how{" "}
+                  <span className="text-highlight-butter font-bold">
+                    digital products
+                  </span>{" "}
+                  are built and how ideas transform into real experiences on the
+                  web. with a background in computer applications, i enjoy
+                  turning concepts into{" "}
+                  <span className="text-highlight-pink font-bold">
+                    responsive interfaces
+                  </span>
+                  .
+                </p>
+
+                <p className="text-sm tracking-widest leading-relaxed ml-6 max-w-2xl">
+                  i work with modern web technologies like{" "}
+                  <span className="text-highlight-sky font-bold">
+                    javascript, react, node.js
+                  </span>
+                  , express, and databases to build{" "}
+                  <span className="text-highlight-sage font-bold">
+                    scalable full-stack applications
+                  </span>
+                  . i believe great development is a balance between logic,
+                  creativity, and attention to detail.
+                </p>
+
+                <p className="text-sm tracking-widest leading-relaxed">
+                  currently, i'm focused on{" "}
+                  <span className="text-highlight-terracotta font-bold">
+                    improving my craft
+                  </span>
+                  , building{" "}
+                  <span className="text-highlight-pink font-bold">
+                    meaningful projects
+                  </span>
+                  , and continuously exploring new technologies.
+                </p>
+              </div>
+
+              {/* resume link */}
+              <a
+                href="/Aiesha_Ganguly_Resume.pdf"
+                download
+                className="mt-10 group cursor-pointer block"
+              >
+                <p className="text-sm tracking-widest flex items-center gap-3 justify-end">
+                  <span className="text-highlight-pink">ˋ°•*⁀➷</span>
+
+                  <span className="relative text-link-colour hover:text-link-hover uppercase">
+                    download my resume
+                    <span className="absolute left-0 -bottom-1 w-0 h-px bg-current transition-all duration-300 group-hover:w-full" />
+                  </span>
+                </p>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+};
+
+export default Studio;

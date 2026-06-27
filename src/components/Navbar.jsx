@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
 
   return (
-    <nav className="flex h-18 items-center justify-between border-b border-border-light/60 bg-bg-primary px-12">
+    <nav className="flex w-full h-18 items-center justify-between border-b border-border-light/60 bg-bg-primary/70 backdrop-blur-md px-12 fixed top-0 left-0 z-50">
       <div className="relative w-fit">
         <Link to="/" className="leading-none">
           <p className="font-satoshi text-[12px] uppercase tracking-[0.6em] text-text-muted">
@@ -13,10 +13,6 @@ const Navbar = () => {
 
           <h1 className="font-garamond text-5xl text-text-secondary">01</h1>
         </Link>
-
-        {/* <span className="absolute left-full top-1/2 ml-3 -translate-y-1/2 whitespace-nowrap font-snell text-3xl text-text-secondary">
-          <span className="font-medium">⋆˚꩜｡</span>digital edition
-        </span> */}
       </div>
 
       <div className="flex gap-12 items-center">

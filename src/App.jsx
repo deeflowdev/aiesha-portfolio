@@ -9,6 +9,7 @@ import Connect from "./pages/Connect";
 import Layout from "./components/Layout";
 import Cursor from "./components/Cursor";
 import Test from "./Test";
+import Footer from "./components/Footer";
 
 const App = () => {
   return (
@@ -19,12 +20,13 @@ const App = () => {
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
           <Route path="/projects" element={<Works />} />
-          <Route path="/about" element={<Studio />} />
+          <Route path="" element={<Studio />} />
           <Route path="/laboratory" element={<Laboratory />} />
           <Route path="/archive" element={<Archive />} />
           <Route path="/contact" element={<Connect />} />
         </Route>
       </Routes>
+      
     </>
   );
 };
