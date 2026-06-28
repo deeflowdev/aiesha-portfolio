@@ -1,16 +1,40 @@
-# React + Vite
+# ✦ aiesha ganguly — portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+a modern personal portfolio website built to showcase my journey as a full-stack developer, featuring creative design, smooth animations, and interactive experiences.
 
-Currently, two official plugins are available:
+## ✧ live preview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+https://aiesha-portfolio.vercel.app/
 
-## React Compiler
+## ✦ about
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+this portfolio represents my approach to building digital experiences that combine:
 
-## Expanding the ESLint configuration
+- clean and scalable code
+- thoughtful UI/UX design
+- smooth animations
+- responsive layouts
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## ✧ features
+
+- responsive design for desktop, tablet, and mobile
+- animated UI interactions
+- smooth scroll-based animations
+- interactive skill constellation
+- modern editorial-inspired interface
+- downloadable resume
+- project showcase
+
+## ✦ tech stack
+
+### frontend
+- react.js
+- javascript
+- html5
+- css3
+- tailwind css
+- gsap
+
+### tools
+- git & github
+- vscode
