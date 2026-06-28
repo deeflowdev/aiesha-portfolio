@@ -1,9 +1,62 @@
-import React from 'react'
+import React from "react";
 
 const Connect = () => {
-  return (
-    <div>Connect</div>
-  )
-}
+  const links = [
+    {
+      name: "GitHub",
+      href: "https://github.com/deeflowdev",
+    },
+    {
+      name: "LinkedIn",
+      href: "https://www.linkedin.com/in/aiesha-ganguly/",
+    },
+    {
+      name: "Email",
+      href: "mailto:aieshaganguly@gmail.com",
+    },
+  ];
 
-export default Connect
+  return (
+    <section className="bg-bg-primary py-24 px-6 overflow-hidden">
+      <div className="max-w-5xl mx-auto text-center">
+        <p className="uppercase tracking-[0.6em] text-sm text-text-secondary">
+          let's connect
+        </p>
+
+        <h1 className="font-garamond text-6xl sm:text-8xl mt-6">
+          build something
+          <br />
+          meaningful
+        </h1>
+
+        <p className="mt-8 max-w-xl mx-auto text-sm sm:text-base tracking-wide leading-relaxed">
+          currently looking for opportunities where i can create thoughtful
+          digital experiences and grow as a full-stack developer.
+        </p>
+
+        <div className="mt-12 flex flex-wrap justify-center gap-6">
+          {links.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              className="
+              uppercase
+              tracking-[0.3em]
+              text-sm
+              border-b
+              border-border-dark
+              pb-2
+              hover:text-highlight-pink
+              transition-colors
+              "
+            >
+              {link.name}
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Connect;

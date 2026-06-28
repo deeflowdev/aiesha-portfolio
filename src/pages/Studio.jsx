@@ -70,7 +70,7 @@ const Studio = () => {
 
   return (
     <>
-      <section ref={sectionRef} className="bg-bg-primary px-4 sm:px-8 lg:px-0">
+      <section ref={sectionRef} className="bg-bg-primary px-4 sm:px-8 lg:px-0 overflow-hidden">
         <div className="studio-card relative overflow-hidden pb-8 sm:pb-12 lg:pb-16">
           {/* heading */}
           <div className="relative">

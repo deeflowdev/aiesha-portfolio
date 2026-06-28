@@ -8,14 +8,15 @@ gsap.registerPlugin(ScrollTrigger);
 const Skills = () => {
 
   const sectionRef = useRef(null)
+  const titleRef = useRef(null)
   
   // skills
   const skills = [
     {
       id: "html",
       name: "HTML",
-      x: 18,
-      y: 30,
+      x: 20,
+      y: 28,
       size: "small",
       colour: "var(--accent-butter)",
       description: "Building semantic and accessible page structures.",
@@ -24,8 +25,8 @@ const Skills = () => {
     {
       id: "css",
       name: "CSS",
-      x: 12,
-      y: 58,
+      x: 18,
+      y: 62,
       size: "small",
       colour: "var(--accent-sage)",
       description: "Creating responsive layouts and modern styling.",
@@ -34,8 +35,8 @@ const Skills = () => {
     {
       id: "javascript",
       name: "JavaScript",
-      x: 76,
-      y: 42,
+      x: 72,
+      y: 38,
       size: "large",
       colour: "var(--accent-pink)",
       description:
@@ -45,8 +46,8 @@ const Skills = () => {
     {
       id: "react",
       name: "React",
-      x: 55,
-      y: 12,
+      x: 48,
+      y: 18,
       size: "large",
       colour: "var(--accent-lavender)",
       description: "Building reusable components and modern user interfaces.",
@@ -55,7 +56,7 @@ const Skills = () => {
     {
       id: "python",
       name: "Python",
-      x: 65,
+      x: 63,
       y: 72,
       size: "medium",
       colour: "var(--accent-sky)",
@@ -65,8 +66,8 @@ const Skills = () => {
     {
       id: "tailwind",
       name: "Tailwind CSS",
-      x: 30,
-      y: 22,
+      x: 34,
+      y: 20,
       size: "medium",
       colour: "var(--accent-sky)",
       description: "Designing fast, consistent, utility-first interfaces.",
@@ -75,8 +76,8 @@ const Skills = () => {
     {
       id: "gsap",
       name: "GSAP",
-      x: 84,
-      y: 18,
+      x: 82,
+      y: 20,
       size: "medium",
       colour: "var(--accent-butter)",
       description: "Crafting smooth, immersive web animations.",
@@ -85,8 +86,8 @@ const Skills = () => {
     {
       id: "git",
       name: "Git",
-      x: 34,
-      y: 76,
+      x: 32,
+      y: 78,
       size: "small",
       colour: "var(--accent-pink)",
       description: "Managing versions and collaborating through GitHub.",
@@ -95,8 +96,8 @@ const Skills = () => {
     {
       id: "node",
       name: "Node.js",
-      x: 82,
-      y: 68,
+      x: 78,
+      y: 66,
       size: "medium",
       colour: "var(--accent-sage)",
       description: "Building server-side applications and REST APIs.",
@@ -105,8 +106,8 @@ const Skills = () => {
     {
       id: "responsive",
       name: "Responsive UI",
-      x: 48,
-      y: 48,
+      x: 50,
+      y: 52,
       size: "medium",
       colour: "var(--accent-lavender)",
       description: "Creating layouts that adapt beautifully across devices.",
@@ -114,87 +115,99 @@ const Skills = () => {
   ];
 
   const sizes = {
-    small: "w-14 h-14 sm:w-18 sm:h-18",
-    medium: "w-18 h-18 sm:w-30 sm:h-30",
-    large: "w-26 h-26 sm:w-34 sm:h-34",
+    small: "w-16 h-16 sm:w-22 sm:h-22",
+    medium: "w-24 h-24 sm:w-34 sm:h-34",
+    large: "w-32 h-32 sm:w-42 sm:h-42",
   };
 
-      useGSAP(
-        () => {
-          (gsap.from(".skill-node", {
-            yPercent: -150,
-            opacity: 0,
-            scale: 0.3,
-            rotate: "random(-8, 8)",
-            duration: 1.4,
-            stagger: {
-              amount: 1,
-              from: "random",
-            },
-            ease: "elastic.out(1, 0.5)",
-            scrollTrigger: {
-              trigger: sectionRef.current,
-              start: "top 95%",
-              // markers: true,
-              toggleActions: "restart none none restart",
-              onEnter: () => {
-                gsap.to(".skill-node", {
-                  y: "+=8",
-                  duration: 2.5,
-                  repeat: -1,
-                  yoyo: true,
-                  ease: "sine.inOut",
-                  stagger: {
-                    each: 0.15,
-                    from: "random",
-                  },
-                });
-              },
-            },
-          }));
-        },
-        { scope: sectionRef },
-        
-      );
+  useGSAP(
+    () => {
+      const nodes = gsap.utils.toArray(".skill-node");
+
+      nodes.forEach((node, index) => {
+        gsap.to(node, {
+          y: gsap.utils.random(-12, 12),
+          x: gsap.utils.random(-8, 8),
+          rotate: gsap.utils.random(-3, 3),
+          duration: gsap.utils.random(5, 7),
+          ease: "sine.inOut",
+          repeat: -1,
+          yoyo: true,
+          delay: index * 0.3,
+        });
+      });
+    },
+    {
+      scope: sectionRef,
+    },
+  );
 
   return (
     <section
       ref={sectionRef}
-      className="skills-section bg-bg-primary py-16 sm:py-20 mt-0 backdrop-blur-2xl overflow-hidden"
+      className="skills-section relative bg-bg-primary py-16 sm:py-20 mt-0 overflow-hidden"
     >
-      <p className="tracking-[0.6em] uppercase text-sm">stellar stack</p>
+      {/* grid lines */}
+      <div className="absolute inset-0 pointer-events-none opacity-[0.045] bg-[linear-gradient(to_right,#000_1px,transparent_1px),linear-gradient(to_bottom,#000_1px,transparent_1px)] bg-size-[90px_90px] mask-[linear-gradient(to_bottom,transparent,black_15%,black_85%,transparent)]" />
 
-      <h1 className="font-garamond text-6xl sm:text-8xl">skills</h1>
+      <p className="relative z-20 tracking-[0.7em] uppercase text-xs text-text-muted mb-4">
+        stellar stack
+      </p>
+
+      <h1
+        ref={titleRef}
+        className="relative font-garamond text-7xl sm:text-9xl leading-none bg-gradient-accent bg-clip-text text-transparent drop-shadow-[0_0_25px_rgba(255,170,200,0.25)] z-20"
+      >
+        skills
+        <span className="absolute -top-2 right-0 text-3xl font-snell text-accent-pink">
+          ✦
+        </span>
+        <div className="mt-6 h-px w-40 bg-gradient-accent opacity-70"></div>
+      </h1>
 
       {/* desktop constellation */}
-      <div className="relative h-[420px] sm:h-[500px] hidden sm:block">
+      <div className="relative z-20 h-[400px] sm:h-[520px] hidden sm:block">
+        {/* ambient glow */}
         <div
-          className="
-      absolute left-1/2 top-1/2
-      -translate-x-1/2 -translate-y-1/2
-      w-[700px] h-[700px]
-      rounded-full blur-[120px]
-      opacity-30 pointer-events-none"
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-[120px] opacity-25 pointer-events-none"
           style={{
             background:
-              "radial-gradient(circle, rgba(255,226,235,.45), transparent 70%)",
+              "radial-gradient(circle, rgba(255,180,210,.35), transparent 65%)",
           }}
         />
+
+        <svg
+          className="absolute inset-0 w-full h-full opacity-20"
+          viewBox="0 0 1000 500"
+        >
+          <path
+            d="M150 280 C300 100 500 400 850 180"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1"
+            strokeDasharray="6 12"
+          />
+        </svg>
 
         {skills.map((skill) => (
           <div
             key={skill.id}
-            className="skill-node absolute -translate-x-1/2 -translate-y-1/2"
+            className="skill-node absolute  -translate-x-1/2 -translate-y-1/2 will-change-transform"
             style={{
               left: `${skill.x}%`,
               top: `${skill.y}%`,
             }}
           >
             <div
-              className={`${sizes[skill.size]} rounded-full flex items-center justify-center border border-border-dark backdrop-blur-md shadow-lg cursor-pointer transition-all duration-300 hover:scale-110`}
-              style={{ backgroundColor: skill.colour }}
+              className={`${sizes[skill.size]} rounded-full flex items-center justify-center cursor-pointer border border-border-dark/40 backdrop-blur-md shadow-[0_20px_50px_rgba(0, 0, 0, 0.08)] transition-all duration-500 hover:scale-110 hover:-translate-y-2`}
+              style={{
+                backgroundColor: skill.colour,
+              }}
             >
-              <p className="text-md uppercase tracking-wider text-text-primary font-garamond px-3 text-center leading-relaxed whitespace-nowrap">
+              {/* inner glow */}
+              <div className="absolute inset-2 rounded-full bg-white/20 blur-md" />
+
+              <p className="text-sm uppercase tracking-[0.18em] text-text-primary font-garamond text-center px-4 whitespace-nowrap">
                 {skill.name}
               </p>
             </div>
@@ -203,18 +216,95 @@ const Skills = () => {
       </div>
 
       {/* mobile grid */}
-      <div className="sm:hidden grid grid-cols-2 gap-5 mt-10 px-4">
+      <div className="sm:hidden relative z-20 grid grid-cols-2 gap-5 mt-10 px-4">
         {skills.map((skill) => (
           <div
             key={skill.id}
-            className={`${sizes[skill.size]} rounded-full flex items-center justify-center border border-border-dark mx-auto`}
+            className={`${sizes[skill.size]} rounded-3xl flex items-center justify-center border border-border-light bg-text-white shadow-lg p-6 mx-auto transition-all hover:scale-105`}
             style={{ backgroundColor: skill.colour }}
           >
-            <p className="text-xs uppercase tracking-wider text-text-primary font-garamond text-center px-2">
+            <p className="text-xs uppercase tracking-[0.2em] text-text-primary font-garamond text-center px-2">
               {skill.name}
             </p>
           </div>
         ))}
+      </div>
+
+      <div className="mt-28 relative z-20 max-w-5xl">
+        <p
+          className="
+    uppercase
+    tracking-[0.6em]
+    text-xs
+    text-text-muted
+  "
+        >
+          currently
+        </p>
+
+        <h2
+          className="
+    mt-6
+    font-garamond
+    text-5xl
+    sm:text-7xl
+    leading-tight
+  "
+        >
+          building thoughtful
+          <br />
+          digital experiences.
+        </h2>
+
+        <div
+          className="
+    mt-12
+    grid
+    sm:grid-cols-3
+    gap-8
+    text-sm
+    tracking-wide
+  "
+        >
+          <div>
+            <p className="uppercase tracking-[0.3em] text-xs text-text-muted">
+              creating
+            </p>
+            <p className="mt-3">
+              full-stack applications
+              <br />
+              with clean architecture
+            </p>
+          </div>
+
+          <div>
+            <p className="uppercase tracking-[0.3em] text-xs text-text-muted">
+              exploring
+            </p>
+            <p className="mt-3">
+              better systems,
+              <br />
+              animations & design
+            </p>
+          </div>
+
+          <div>
+            <p className="uppercase tracking-[0.3em] text-xs text-text-muted">
+              beyond code
+            </p>
+            <p className="mt-3">
+              curiosity ✦ creativity
+              <br />
+              continuous growth
+            </p>
+          </div>
+          
+          <div>
+            <p className="uppercase tracking-[0.5em] text-xs text-text-muted">
+              full-stack developer in evolution
+            </p>
+          </div>
+        </div>
       </div>
     </section>
   );
