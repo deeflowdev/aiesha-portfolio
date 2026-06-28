@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
 
   return (
-    <nav className="flex w-full h-18 items-center justify-between border-b border-border-light/60 bg-bg-primary/70 backdrop-blur-md px-12 fixed top-0 left-0 z-50">
+    <nav className="flex w-full h-18 items-center justify-between border-b border-border-light/60 bg-bg-primary/70 backdrop-blur-md px-12">
       <div className="relative w-fit">
         <Link to="/" className="leading-none">
           <p className="font-satoshi text-[12px] uppercase tracking-[0.6em] text-text-muted">

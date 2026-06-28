@@ -289,3 +289,50 @@
   }
 }
 
+.sparkle::after {
+  content: "✦";
+  position: absolute;
+  top: -10px;
+  right: -15px;
+  font-size: 14px;
+  animation: sparkle 1.5s infinite;
+}
+
+.sparkle::after {
+  content: "⋆";
+  position: absolute;
+  top: -10px;
+  right: -15px;
+  font-size: 14px;
+  animation: sparkle 1.5s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(0.8) rotate(0deg);
+    filter: drop-shadow(0 0 5px rgba(255,170,200,0.4));
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.25) rotate(20deg);
+    filter: drop-shadow(0 0 18px rgba(255,220,240,0.9));
+  }
+}
+
+.sparkle-icon {
+  animation: iconGlow 2.5s ease-in-out infinite;
+}
+
+@keyframes iconGlow {
+  0%, 100% {
+    opacity: 0.75;
+    filter: drop-shadow(0 0 8px rgba(255,170,200,0.35));
+  }
+
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 15px rgba(255,220,240,0.7));
+  }
+}

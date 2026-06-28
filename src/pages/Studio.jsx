@@ -2,6 +2,7 @@ import { useRef, useLayoutEffect, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Game from "../components/Game";
+import Skills from "./Skills";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -69,42 +70,39 @@ const Studio = () => {
 
   return (
     <>
-      <section
-        ref={sectionRef}
-        className="min-h-[calc(100vh-4.5rem)] bg-bg-primary"
-      >
+      <section ref={sectionRef} className="min-h-screen bg-bg-primary">
         <div className="studio-card h-full relative overflow-hidden">
           {/* heading */}
-          <div className="absolute top-8 left-10 z-10">
-            <h1 className="text-7xl font-garamond mb-10 whitespace-nowrap">
-              {title.map((word, index) => {
-                return (
-                  <span
-                    key={index}
-                    style={{
-                      "--hover-color": hoverColours[index],
-                    }}
-                    onMouseEnter={() =>
-                      setHoverColours((prev) => ({
-                        ...prev,
-                        [index]:
-                          colours[Math.floor(Math.random() * colours.length)],
-                      }))
-                    }
-                    className="
-          inline-block
-          mr-4
-          transition-all
-          duration-300
-          hover:text-[var(--hover-color)]
-          hover:-translate-y-1
-        "
-                  >
-                    {word}
-                  </span>
-                );
-              })}
-            </h1>
+          <div className="relative">
+            <div className="absolute top-8 left-10 z-10">
+              <h1 className="text-7xl font-garamond mb-10 whitespace-nowrap">
+                {title.map((word, index) => {
+                  return (
+                    <span
+                      key={index}
+                      style={{
+                        "--hover-color": hoverColours[index],
+                      }}
+                      onMouseEnter={() =>
+                        setHoverColours((prev) => ({
+                          ...prev,
+                          [index]:
+                            colours[Math.floor(Math.random() * colours.length)],
+                        }))
+                      }
+                      className="inline-block mr-4 transition-all duration-300 hover:text-(--hover-color) hover:-translate-y-1"
+                    >
+                      {word}
+                    </span>
+                  );
+                })}
+              </h1>
+            </div>
+            <div className="absolute top-8 right-10 z-10 sparkle">
+              <h1 className="text-5xl font-snell mb-10 whitespace-nowrap font-light text-transparent bg-gradient-accent bg-clip-text drop-shadow-[0_0_18px_rgba(255,170,200,0.6)] opacity-70 sparkle-icon">
+                ˚˖𐦍˖˚
+              </h1>
+            </div>
           </div>
 
           {/* content */}
@@ -200,6 +198,7 @@ const Studio = () => {
           </div>
         </div>
       </section>
+      <Skills />
     </>
   );
 };

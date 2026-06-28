@@ -7,9 +7,7 @@ const Layout = () => {
     <>
       <Navbar />
 
-      <main className="pt-18">
-        <Outlet />
-      </main>
+      <Outlet />
 
       <Footer />
     </>
