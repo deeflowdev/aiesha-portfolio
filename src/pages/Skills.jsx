@@ -114,14 +114,14 @@ const Skills = () => {
   ];
 
   const sizes = {
-        small: "w-18 h-18",
-        medium: "w-30 h-30",
-        large: "w-34 h-34",
-      };
+    small: "w-14 h-14 sm:w-18 sm:h-18",
+    medium: "w-18 h-18 sm:w-30 sm:h-30",
+    large: "w-26 h-26 sm:w-34 sm:h-34",
+  };
 
       useGSAP(
         () => {
-          gsap.from(".skill-node", {
+          (gsap.from(".skill-node", {
             yPercent: -150,
             opacity: 0,
             scale: 0.3,
@@ -134,9 +134,9 @@ const Skills = () => {
             ease: "elastic.out(1, 0.5)",
             scrollTrigger: {
               trigger: sectionRef.current,
-              start: "top 70%",
-              markers: true,
-              toggleActions: "play none none reverse",
+              start: "top 95%",
+              // markers: true,
+              toggleActions: "restart none none restart",
               onEnter: () => {
                 gsap.to(".skill-node", {
                   y: "+=8",
@@ -151,45 +151,71 @@ const Skills = () => {
                 });
               },
             },
-          });
+          }));
         },
         { scope: sectionRef },
+        
       );
 
   return (
-    <section ref={sectionRef} className="skills-section min-h-screen mt-3">
-      {/*title  */}
+    <section
+      ref={sectionRef}
+      className="skills-section bg-bg-primary py-16 sm:py-20 mt-0 backdrop-blur-2xl overflow-hidden"
+    >
+      <p className="tracking-[0.6em] uppercase text-sm">stellar stack</p>
 
-      <p className="tracking-[0.6em] uppercase text-sm">my universe</p>
+      <h1 className="font-garamond text-6xl sm:text-8xl">skills</h1>
 
-      <h1 className="font-garamond text-8xl">skills</h1>
+      {/* desktop constellation */}
+      <div className="relative h-[420px] sm:h-[500px] hidden sm:block">
+        <div
+          className="
+      absolute left-1/2 top-1/2
+      -translate-x-1/2 -translate-y-1/2
+      w-[700px] h-[700px]
+      rounded-full blur-[120px]
+      opacity-30 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(255,226,235,.45), transparent 70%)",
+          }}
+        />
 
-      {/* constellation design */}
-      <div className="relative h-[500px]">
-        {skills.map((skill) => {
-          return (
+        {skills.map((skill) => (
+          <div
+            key={skill.id}
+            className="skill-node absolute -translate-x-1/2 -translate-y-1/2"
+            style={{
+              left: `${skill.x}%`,
+              top: `${skill.y}%`,
+            }}
+          >
             <div
-              key={skill.id}
-              className="skill-node absolute -translate-x-1/2 -translate-y-1/2"
-              style={{
-                left: `${skill.x}%`,
-                top: `${skill.y}%`,
-              }}
+              className={`${sizes[skill.size]} rounded-full flex items-center justify-center border border-border-dark backdrop-blur-md shadow-lg cursor-pointer transition-all duration-300 hover:scale-110`}
+              style={{ backgroundColor: skill.colour }}
             >
-              <div
-                className={`${sizes[skill.size]} rounded-full flex items-center justify-center border border-border-dark backdrop-blur-md shadow-lg cursor-pointer transition-all duration-300 hover:scale-110`}
-                style={{ backgroundColor: skill.colour }}
-              >
-                <p className="text-md uppercase tracking-wider text-text-primary font-garamond px-3 text-center leading-relaxed whitespace-nowrap">
-                  {skill.name}
-                </p>
-              </div>
+              <p className="text-md uppercase tracking-wider text-text-primary font-garamond px-3 text-center leading-relaxed whitespace-nowrap">
+                {skill.name}
+              </p>
             </div>
-          );
-        })}
+          </div>
+        ))}
       </div>
 
-      {/* cards */}
+      {/* mobile grid */}
+      <div className="sm:hidden grid grid-cols-2 gap-5 mt-10 px-4">
+        {skills.map((skill) => (
+          <div
+            key={skill.id}
+            className={`${sizes[skill.size]} rounded-full flex items-center justify-center border border-border-dark mx-auto`}
+            style={{ backgroundColor: skill.colour }}
+          >
+            <p className="text-xs uppercase tracking-wider text-text-primary font-garamond text-center px-2">
+              {skill.name}
+            </p>
+          </div>
+        ))}
+      </div>
     </section>
   );
 }

@@ -21,7 +21,7 @@ const Studio = () => {
 
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: 'top 75%',
+          start: 'top 80%',
           end: 'top 40%',
           toggleActions: 'play none none reverse'
         }
@@ -70,12 +70,12 @@ const Studio = () => {
 
   return (
     <>
-      <section ref={sectionRef} className="min-h-screen bg-bg-primary">
-        <div className="studio-card h-full relative overflow-hidden">
+      <section ref={sectionRef} className="bg-bg-primary px-4 sm:px-8 lg:px-0">
+        <div className="studio-card relative overflow-hidden pb-8 sm:pb-12 lg:pb-16">
           {/* heading */}
           <div className="relative">
-            <div className="absolute top-8 left-10 z-10">
-              <h1 className="text-7xl font-garamond mb-10 whitespace-nowrap">
+            <div className="absolute top-5 left-5 sm:top-6 sm:left-6 lg:top-8 lg:left-10 z-10">
+              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-garamond mb-6 sm:mb-10 whitespace-nowrap">
                 {title.map((word, index) => {
                   return (
                     <span
@@ -98,28 +98,31 @@ const Studio = () => {
                 })}
               </h1>
             </div>
-            <div className="absolute top-8 right-10 z-10 sparkle">
-              <h1 className="text-5xl font-snell mb-10 whitespace-nowrap font-light text-transparent bg-gradient-accent bg-clip-text drop-shadow-[0_0_18px_rgba(255,170,200,0.6)] opacity-70 sparkle-icon">
+
+            <div className="hidden sm:block absolute top-6 right-6 lg:top-8 lg:right-10 z-10 sparkle">
+              <h1 className="text-5xl font-snell mb-10 whitespace-normal lg:whitespace-nowrap font-light text-transparent bg-gradient-accent bg-clip-text drop-shadow-[0_0_18px_rgba(255,170,200,0.6)] opacity-70 sparkle-icon">
                 ˚˖𐦍˖˚
               </h1>
             </div>
           </div>
 
           {/* content */}
-          <div className="h-full flex pt-32">
-            <div className="w-[40%] flex items-center justify-center relative">
+          <div className="flex flex-col lg:flex-row pt-16 sm:pt-20 lg:pt-32">
+            <div className="w-full lg:w-[40%] flex items-center justify-center relative py-10 sm:py-12 lg:py-0 max-w-md mx-auto lg:max-w-none">
               <Game />
             </div>
 
-            <div className="studio-text w-[60%] p-12 flex flex-col justify-center">
+            <div className="studio-text w-full lg:w-[60%] px-5 py-10 sm:px-8 md:px-10 lg:p-12 flex flex-col justify-center">
               <div className="relative">
-                <span className="font-snell text-6xl text-highlight-pink absolute -left-10 -top-18 capitalize">
+                <span className="font-snell text-4xl sm:text-5xl lg:text-6xl text-highlight-pink  lg:absolute lg:-left-10 lg:-top-18 capitalize block mb-6 lg:mb-0">
                   hello!
                 </span>
               </div>
 
+              {/* paragraphs */}
+
               <div className="space-y-6 max-w-2xl capitalize">
-                <p className="text-sm tracking-widest leading-relaxed max-w-2xl">
+                <p className="text-sm sm:text-base lg:text-sm lg:tracking-widest tracking-wide leading-relaxed max-w-2xl">
                   i'm aiesha ganguly — a{" "}
                   <span className="text-highlight-pink font-bold">
                     full-stack developer
@@ -135,7 +138,7 @@ const Studio = () => {
                   intuitive user experiences.
                 </p>
 
-                <p className="text-sm tracking-widest leading-relaxed ml-12 max-w-xl">
+                <p className="text-sm lg:tracking-widest tracking-wide leading-relaxed ml-0 lg:ml-12 max-w-xl">
                   my journey started with{" "}
                   <span className="text-highlight-lavender font-bold">
                     curiosity
@@ -153,7 +156,7 @@ const Studio = () => {
                   .
                 </p>
 
-                <p className="text-sm tracking-widest leading-relaxed ml-6 max-w-2xl">
+                <p className="text-sm lg:tracking-widest tracking-wide leading-relaxed ml-0 lg:ml-6 max-w-2xl">
                   i work with modern web technologies like{" "}
                   <span className="text-highlight-sky font-bold">
                     javascript, react, node.js
@@ -166,7 +169,7 @@ const Studio = () => {
                   creativity, and attention to detail.
                 </p>
 
-                <p className="text-sm tracking-widest leading-relaxed">
+                <p className="text-sm lg:tracking-widest tracking-wide leading-relaxed">
                   currently, i'm focused on{" "}
                   <span className="text-highlight-terracotta font-bold">
                     improving my craft
@@ -183,9 +186,9 @@ const Studio = () => {
               <a
                 href="/Aiesha_Ganguly_Resume.pdf"
                 download
-                className="mt-10 group cursor-pointer block"
+                className="mt-6 lg:mt-10 group cursor-pointer block"
               >
-                <p className="text-sm tracking-widest flex items-center gap-3 justify-end">
+                <p className="text-sm lg:tracking-widest tracking-wide flex items-center gap-3 justify-center lg:justify-end">
                   <span className="text-highlight-pink">ˋ°•*⁀➷</span>
 
                   <span className="relative text-link-colour hover:text-link-hover uppercase">
